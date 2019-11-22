@@ -1,0 +1,15 @@
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\bin\Debug\IssueTrackerWPFUI.exe.config
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\bin\Debug\IssueTrackerWPFUI.exe
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\bin\Debug\IssueTrackerWPFUI.pdb
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI.csprojAssemblyReference.cache
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\MainWindow.g.cs
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\App.g.cs
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI_MarkupCompile.cache
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI_MarkupCompile.lref
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\MainWindow.baml
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI.g.resources
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI.Properties.Resources.resources
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI.csproj.GenerateResource.cache
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI.csproj.CoreCompileInputs.cache
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI.exe
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI.pdb

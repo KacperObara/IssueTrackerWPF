@@ -1,0 +1,6 @@
+F:\Projekty\VisualStudio\IssueTracker\TrackerLibrary\bin\Debug\TrackerLibrary.dll
+F:\Projekty\VisualStudio\IssueTracker\TrackerLibrary\bin\Debug\TrackerLibrary.pdb
+F:\Projekty\VisualStudio\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.csprojAssemblyReference.cache
+F:\Projekty\VisualStudio\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.csproj.CoreCompileInputs.cache
+F:\Projekty\VisualStudio\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.dll
+F:\Projekty\VisualStudio\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.pdb
