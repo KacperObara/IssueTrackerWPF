@@ -42,10 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommentModel.cs" />
+    <Compile Include="GlobalConfig.cs" />
+    <Compile Include="IDataConnection.cs" />
     <Compile Include="IssueModel.cs" />
     <Compile Include="PersonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeverityModel.cs" />
+    <Compile Include="SqlConnector.cs" />
     <Compile Include="StatusModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
