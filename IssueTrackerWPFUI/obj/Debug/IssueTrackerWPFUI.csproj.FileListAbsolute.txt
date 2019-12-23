@@ -13,3 +13,13 @@ F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWP
 F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI.csproj.CoreCompileInputs.cache
 F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI.exe
 F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI.pdb
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\bin\Debug\Caliburn.Micro.dll
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\bin\Debug\Caliburn.Micro.Platform.Core.dll
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\bin\Debug\Caliburn.Micro.Platform.dll
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\bin\Debug\System.Windows.Interactivity.dll
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\bin\Debug\Caliburn.Micro.xml
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\bin\Debug\Caliburn.Micro.Platform.xml
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\bin\Debug\Caliburn.Micro.Platform.Core.xml
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\IssueTrackerWPFUI.csproj.CopyComplete
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\NewIssue.g.cs
+F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\NewIssue.baml

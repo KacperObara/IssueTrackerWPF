@@ -7,7 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid AutoGenerateColumns="True" HorizontalAlignment="Left" Height="349" VerticalAlignment="Top" Width="772"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="60">
+            <Button Margin="10" VerticalAlignment="Center" Width="Auto">
+                <TextBlock Text="New Issue" TextAlignment="Center"/>
+            </Button>
+        </StackPanel>
+
+        <DataGrid Grid.Row="2" AutoGenerateColumns="True"/>
 
     </Grid>
 </Window>
