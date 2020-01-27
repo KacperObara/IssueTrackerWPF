@@ -4,3 +4,11 @@ F:\Projekty\VisualStudio\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.cs
 F:\Projekty\VisualStudio\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.csproj.CoreCompileInputs.cache
 F:\Projekty\VisualStudio\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.dll
 F:\Projekty\VisualStudio\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.pdb
+C:\Projects\Unity\IssueTracker\TrackerLibrary\bin\Debug\TrackerLibrary.dll
+C:\Projects\Unity\IssueTracker\TrackerLibrary\bin\Debug\TrackerLibrary.pdb
+C:\Projects\Unity\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.csprojAssemblyReference.cache
+C:\Projects\Unity\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.dll
+C:\Projects\Unity\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.pdb
+C:\Projects\Unity\IssueTracker\TrackerLibrary\bin\Debug\Dapper.dll
+C:\Projects\Unity\IssueTracker\TrackerLibrary\bin\Debug\Dapper.xml
+C:\Projects\Unity\IssueTracker\TrackerLibrary\obj\Debug\TrackerLibrary.csproj.CopyComplete

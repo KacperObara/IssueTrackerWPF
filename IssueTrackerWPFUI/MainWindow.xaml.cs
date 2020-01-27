@@ -24,5 +24,17 @@ namespace IssueTrackerWPFUI
         {
             InitializeComponent();
         }
+
+        private void NewIssueButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NewPersonButton_Click(object sender, RoutedEventArgs e)
+        {
+            NewPerson newPersonWindow = new NewPerson();
+            newPersonWindow.Show();
+            this.Close();
+        }
     }
 }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\obj\Debug\
+C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\
 IssueTrackerWPFUI
 none
 false
 DEBUG;TRACE
-F:\Projekty\VisualStudio\IssueTracker\IssueTrackerWPFUI\App.xaml
-2-417817201
+C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\App.xaml
+3-2133064173
 
-71408304
-1211818540893
-MainWindow.xaml;NewIssue.xaml;
+8191224214
+123-584635824
+MainWindow.xaml;NewIssue.xaml;NewPerson.xaml;
 
 True
 

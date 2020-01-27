@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrackerLibrary
+namespace TrackerLibrary.Models
 {
-    public class SeverityModel
+    public class StatusModel
     {
-        public string SeverityName { get; set; }
+        public string StatusName { get; set; }
     }
 }

@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrackerLibrary
+namespace TrackerLibrary.Models
 {
+    /// <summary>
+    /// This is not being implemented for now.
+    /// </summary>
     public class CommentModel
     {
         public string Content { get; set; }

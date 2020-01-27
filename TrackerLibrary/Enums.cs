@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TrackerLibrary
 {
-    public interface IDataConnection
+    public enum DatabaseType
     {
+        Sql,
+        TextFile
     }
 }

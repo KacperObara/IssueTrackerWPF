@@ -10,12 +10,12 @@
 
         <StackPanel Background="#f0f1f2">
             <TextBlock Text="Title" HorizontalAlignment="Left" Width="Auto" FontSize="20"/>
-            <TextBox Height="Auto"/>
+            <TextBox x:Name="TitleBox" Height="Auto"/>
             <TextBlock Text="Description" HorizontalAlignment="Left" Width="Auto" FontSize="20"/>
-            <RichTextBox VerticalScrollBarVisibility="Auto" MinHeight="200" MaxHeight="400" Height="Auto" Block.LineHeight="1"/>
+            <RichTextBox x:Name="DescriptionBox" VerticalScrollBarVisibility="Auto" MinHeight="200" MaxHeight="400" Height="Auto" Block.LineHeight="1"/>
             <TextBlock Text="Severity" HorizontalAlignment="Left" Width="Auto" FontSize="20"/>
-            <ComboBox/>
-            <Button Content="Create" MinWidth="75"  MinHeight="25"  HorizontalAlignment="Right" Margin="20" />
+            <ComboBox x:Name="SeverityBox" ItemsSource="{Binding Severities}"/>
+            <Button Content="Create" Click="CreateIssueButton_Click" MinWidth="75"  MinHeight="25"  HorizontalAlignment="Right" Margin="20" />
         </StackPanel>
     </Grid>
 </Window>

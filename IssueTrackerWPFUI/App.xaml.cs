@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using TrackerLibrary;
 
 namespace IssueTrackerWPFUI
 {
@@ -13,5 +14,10 @@ namespace IssueTrackerWPFUI
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
+        }
     }
 }

@@ -1,0 +1,30 @@
+﻿<Window x:Class="IssueTrackerWPFUI.NewPerson"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IssueTrackerWPFUI"
+        mc:Ignorable="d"
+        Title="New Person" Height="450" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1" Grid.Row="1" Background="#f0f1f2">
+            <TextBlock Text="Login" HorizontalAlignment="Center" Width="Auto" FontSize="28"/>
+            <TextBox x:Name="LoginBox" Height="Auto" FontSize="28"/>
+            <TextBlock Text="Password" HorizontalAlignment="Center" Width="Auto" FontSize="28"/>
+            <PasswordBox x:Name="PasswordBox" Height="Auto" FontSize="28"/>
+            <TextBlock Text="Email" HorizontalAlignment="Center" Width="Auto" FontSize="28"/>
+            <TextBox x:Name="EmailBox" Height="Auto" FontSize="28"/>
+            <Button Content="Register" Click="CreatePersonButton_Click" MinWidth="75"  MinHeight="25"  HorizontalAlignment="Center" Margin="20" FontSize="28" />
+        </StackPanel>
+    </Grid>
+</Window>
