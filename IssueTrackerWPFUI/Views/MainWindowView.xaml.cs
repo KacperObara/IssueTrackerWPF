@@ -13,28 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IssueTrackerWPFUI
+namespace IssueTrackerWPFUI.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindowView : Window
     {
-        public MainWindow()
+        public MainWindowView()
         {
             InitializeComponent();
-        }
-
-        private void NewIssueButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void NewPersonButton_Click(object sender, RoutedEventArgs e)
-        {
-            NewPerson newPersonWindow = new NewPerson();
-            newPersonWindow.Show();
-            this.Close();
         }
     }
 }

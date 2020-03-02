@@ -53,9 +53,16 @@ namespace TrackerLibrary.DataAcess
             }
         }
 
-        List<SeverityModel> IDataConnection.GetSeverities()
+        public List<SeverityModel> GetSeverities()
         {
-            throw new NotImplementedException();
+            List<SeverityModel> output = new List<SeverityModel>();
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
+            {
+                output = connection.Query<SeverityModel>("spSeverity_GetAll").ToList();
+            }
+
+            return output;
         }
     }
 }
