@@ -6,4 +6,4 @@ I believe, that showing both of them performing the same task will help people t
 
 Technologies used:
 [Caliburn.Micro](https://caliburnmicro.com/) - Powerful MVVM framework.
-[FluenValidation](https://fluentvalidation.net/) - Tool for clean and easy data validation.
+[FluentValidation](https://fluentvalidation.net/) - Tool for clean and easy data validation.
