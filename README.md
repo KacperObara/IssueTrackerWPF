@@ -5,5 +5,5 @@ The first is Class library. When this is done, I plan to create similar applicat
 I believe, that showing both of them performing the same task will help people to understand them better.
 
 Technologies used:
-[Caliburn.Micro](https://caliburnmicro.com/) - Powerful MVVM framework.
+[Caliburn.Micro](https://caliburnmicro.com/) - Powerful MVVM framework.  
 [FluentValidation](https://fluentvalidation.net/) - Tool for clean and easy data validation.
