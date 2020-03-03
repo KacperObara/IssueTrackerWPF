@@ -65,11 +65,11 @@ namespace IssueTrackerWPFUI.ViewModels
 
         public void AddPerson()
         {
-            PersonModel person = new PersonModel(UserLogin, UserPassword, UserEmail);
+            PersonModel person = new PersonModel(UserLogin, UserEmail); //PASSWORD
 
             if (ValidateForm(person) == true)
             {
-                GlobalConfig.Connection.CreatePerson(person);
+                GlobalConfig.Connection.CreatePerson(person, UserPassword);
             }
         }
 

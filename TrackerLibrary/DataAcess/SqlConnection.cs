@@ -35,13 +35,13 @@ namespace TrackerLibrary.DataAcess
             }
         }
 
-        public PersonModel CreatePerson(PersonModel model)
+        public PersonModel CreatePerson(PersonModel model, string password)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
             {
                 var parameter = new DynamicParameters();
                 parameter.Add("@Login", model.Login);
-                parameter.Add("@Password", model.Password);
+                parameter.Add("@Password", password);
                 parameter.Add("@Email", model.Email);
                 parameter.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -51,6 +51,18 @@ namespace TrackerLibrary.DataAcess
 
                 return model;
             }
+        }
+
+        public List<PersonModel> GetPeople()
+        {
+            List<PersonModel> output = new List<PersonModel>();
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
+            {
+                output = connection.Query<PersonModel>("spPerson_GetAll").ToList();
+            }
+
+            return output;
         }
 
         public List<SeverityModel> GetSeverities()

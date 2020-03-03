@@ -1,10 +1,6 @@
 ﻿using FluentValidation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using TrackerLibrary.Models;
 
 namespace IssueTrackerWPFUI.Validators
@@ -19,22 +15,15 @@ namespace IssueTrackerWPFUI.Validators
                 .Length(3, 20)
                 .Must(BeAValidLogin).WithMessage("Login cannot start with number");
 
-            RuleFor(p => p.Password)
-                .Cascade(CascadeMode.StopOnFirstFailure)
-                .NotEmpty()
-                .Must(f)
-                .Length(6, 20).WithMessage("Password too short or too long");
+            //RuleFor(p => p.Password)
+            //    .Cascade(CascadeMode.StopOnFirstFailure)
+            //    .NotEmpty()
+            //    .Length(6, 20).WithMessage("Password is either too short or too long");
 
             RuleFor(p => p.Email)
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty()
                 .Must(BeAValidEmail).WithMessage("Not a valid Email adress");
-        }
-
-        private bool f(string password)
-        {
-            Console.WriteLine(password);
-            return true;
         }
 
         private static bool BeAValidLogin(string login)

@@ -1,18 +1,79 @@
 ﻿using Caliburn.Micro;
+using FluentValidation.Results;
+using IssueTrackerWPFUI.Validators;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TrackerLibrary;
 using TrackerLibrary.Models;
+using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace IssueTrackerWPFUI.ViewModels
 {
-    public class NewIssueViewModel
+    public class NewIssueViewModel : PropertyChangedBase
     {
+        private string _title;
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                _title = value;
+                NotifyOfPropertyChange(() => Title);
+            }
+        }
+
+        private string _description;
+        public string Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                _description = value;
+                NotifyOfPropertyChange(() => Description);
+            }
+        }
+
+        private PersonModel _assignee;
+        public PersonModel Assignee
+        {
+            get
+            {
+                return _assignee;
+            }
+            set
+            {
+                _assignee = value;
+                NotifyOfPropertyChange(() => Assignee);
+            }
+        }
+
+        private SeverityModel _activeSeverity;
+        public SeverityModel ActiveSeverity
+        {
+            get
+            {
+                return _activeSeverity;
+            }
+            set
+            {
+                _activeSeverity = value;
+                NotifyOfPropertyChange(() => ActiveSeverity);
+            }
+        }
+
         public BindableCollection<SeverityModel> Severities { get; private set; }
-        public BindableCollection<SeverityModel> People { get; private set; }
+        public BindableCollection<PersonModel> People { get; private set; }
 
         public NewIssueViewModel()
         {
@@ -22,45 +83,33 @@ namespace IssueTrackerWPFUI.ViewModels
 
         public void AddIssue()
         {
+            IssueModel issue = new IssueModel(Title, Description, DateTime.Now, Assignee, ActiveSeverity);
 
+            if (ValidateForm(issue) == true)
+            {
+                GlobalConfig.Connection.CreateIssue(issue);
+            }
         }
 
-        //private void CreateIssue()
-        //{
-        //    if (ValidateForm())
-        //    {
-        //        // Get Text from RichTextBox
-        //        string DescriptionText = new TextRange(DescriptionBox.Document.ContentStart, DescriptionBox.Document.ContentEnd).Text;
+        private bool ValidateForm(IssueModel issue)
+        {
+            IssueValidator validator = new IssueValidator();
+            ValidationResult results = validator.Validate(issue);
 
-        //        IssueModel model = new IssueModel(TitleBox.Text,
-        //                                          DescriptionText,
-        //                                          DateTime.Now);
+            // Shows errors in MessageBox (TODO: Change it so it doesn't violate DRY)
+            if (results.IsValid == false)
+            {
+                string errorList = "";
+                foreach (ValidationFailure failure in results.Errors)
+                {
+                    errorList += $"{failure.PropertyName}: {failure.ErrorMessage} \n";
+                }
+                MessageBox.Show(errorList);
 
-        //        GlobalConfig.Connection.CreateIssue(model);
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Invalid form.");
-        //    }
-        //}
+                return false;
+            }
 
-        //private bool ValidateForm()
-        //{
-        //    bool output = true;
-
-        //    if (TitleBox.Text.Length < 3)
-        //        output = false;
-
-        //    // Get Text from RichTextBox
-        //    string DescriptionText = new TextRange(DescriptionBox.Document.ContentStart, DescriptionBox.Document.ContentEnd).Text;
-
-        //    if (DescriptionText.Length < 3)
-        //        output = false;
-
-        //    //if (SeverityBox.SelectedItem == null)
-        //    //    output = false;
-
-        //    return output;
-        //}
+            return true;
+        }
     }
 }

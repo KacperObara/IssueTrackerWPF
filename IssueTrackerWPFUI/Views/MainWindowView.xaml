@@ -19,7 +19,7 @@
             </Button>
 
             <Button x:Name="NewPerson" Margin="10" VerticalAlignment="Center" Width="Auto">
-                <TextBlock Text="New Person TMP" TextAlignment="Center"/>
+                <TextBlock Text="New Person" TextAlignment="Center"/>
             </Button>
         </StackPanel>
 
