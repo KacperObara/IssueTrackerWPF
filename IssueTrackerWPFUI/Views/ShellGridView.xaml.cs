@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace IssueTrackerWPFUI.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ShellGridView.xaml
     /// </summary>
-    public partial class MainWindowView : Window
+    public partial class ShellGridView : UserControl
     {
-        public MainWindowView()
+        public ShellGridView()
         {
             InitializeComponent();
         }

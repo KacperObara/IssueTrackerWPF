@@ -11,7 +11,7 @@
             <TextBlock Text="Title" HorizontalAlignment="Left" Width="Auto" FontSize="20"/>
             <TextBox x:Name="Title" Height="Auto"/>
             <TextBlock Text="Description" HorizontalAlignment="Left" Width="Auto" FontSize="20"/>
-            <RichTextBox x:Name="Description" VerticalScrollBarVisibility="Auto" MinHeight="200" MaxHeight="400" Height="Auto" Block.LineHeight="1"/>
+            <RichTextBox x:Name="Description" VerticalScrollBarVisibility="Auto" MinHeight="100" MaxHeight="300" Height="Auto" Block.LineHeight="1"/>
             <TextBlock Text="Severity" HorizontalAlignment="Left" Width="Auto" FontSize="20"/>
             <ComboBox ItemsSource="{Binding Severities}">
                 <ComboBox.ItemTemplate>

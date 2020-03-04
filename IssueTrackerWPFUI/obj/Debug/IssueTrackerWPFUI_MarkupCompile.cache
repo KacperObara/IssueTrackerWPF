@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\App.xaml
-31477495072
+4-1656997886
 
-13-692892323
+15-868944925
 1261176547869
-Views\MainWindowView.xaml;Views\NewIssueView.xaml;Views\NewPersonView.xaml;
+Views\ShellGridView.xaml;Views\ShellView.xaml;Views\NewIssueView.xaml;Views\NewPersonView.xaml;
 
 False
 

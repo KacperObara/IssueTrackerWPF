@@ -2,11 +2,6 @@
 using FluentValidation.Results;
 using IssueTrackerWPFUI.Validators;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using TrackerLibrary;
 using TrackerLibrary.Models;
@@ -91,7 +86,7 @@ namespace IssueTrackerWPFUI.ViewModels
             }
         }
 
-        private bool ValidateForm(IssueModel issue)
+        private static bool ValidateForm(IssueModel issue)
         {
             IssueValidator validator = new IssueValidator();
             ValidationResult results = validator.Validate(issue);

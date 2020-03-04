@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAcess
@@ -13,5 +9,6 @@ namespace TrackerLibrary.DataAcess
         PersonModel CreatePerson(PersonModel model, string password);
         List<SeverityModel> GetSeverities();
         List<PersonModel> GetPeople();
+        List<IssueModel> GetIssues();
     }
 }

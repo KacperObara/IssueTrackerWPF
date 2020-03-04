@@ -49,8 +49,6 @@ C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\bin\Debug\Dapper.xml
 C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\App.g.cs
 C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\App.baml
-C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\Views\MainWindowView.g.cs
-C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\Views\MainWindowView.baml
 C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\Views\NewIssueView.g.cs
 C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\Views\NewPersonView.g.cs
 C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\Views\NewIssueView.baml
@@ -58,3 +56,7 @@ C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\Views\NewPersonView.b
 C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\bin\Debug\FluentValidation.dll
 C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\bin\Debug\System.ComponentModel.Annotations.dll
 C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\bin\Debug\FluentValidation.xml
+C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\Views\ShellView.g.cs
+C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\Views\ShellView.baml
+C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\Views\ShellGridView.g.cs
+C:\Projects\Unity\IssueTracker\IssueTrackerWPFUI\obj\Debug\Views\ShellGridView.baml

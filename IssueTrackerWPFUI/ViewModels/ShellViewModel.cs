@@ -1,16 +1,14 @@
 ﻿using Caliburn.Micro;
-using IssueTrackerWPFUI.Views;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IssueTrackerWPFUI.ViewModels
 {
-    public class MainWindowViewModel : Conductor<object>
+    public class ShellViewModel : Conductor<object>
     {
+        public void ExistingIssues()
+        {
+            ActivateItem(new ShellGridViewModel());
+        }        
+        
         public void NewIssue()
         {
             ActivateItem(new NewIssueViewModel());

@@ -65,7 +65,7 @@ namespace IssueTrackerWPFUI.ViewModels
 
         public void AddPerson()
         {
-            PersonModel person = new PersonModel(UserLogin, UserEmail); //PASSWORD
+            PersonModel person = new PersonModel(UserLogin, UserEmail);
 
             if (ValidateForm(person) == true)
             {

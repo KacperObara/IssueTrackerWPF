@@ -15,11 +15,6 @@ namespace IssueTrackerWPFUI.Validators
                 .Length(3, 20)
                 .Must(BeAValidLogin).WithMessage("Login cannot start with number");
 
-            //RuleFor(p => p.Password)
-            //    .Cascade(CascadeMode.StopOnFirstFailure)
-            //    .NotEmpty()
-            //    .Length(6, 20).WithMessage("Password is either too short or too long");
-
             RuleFor(p => p.Email)
                 .Cascade(CascadeMode.StopOnFirstFailure)
                 .NotEmpty()

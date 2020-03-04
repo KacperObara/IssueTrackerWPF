@@ -1,10 +1,7 @@
 ﻿using Dapper;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAcess
@@ -59,7 +56,7 @@ namespace TrackerLibrary.DataAcess
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
             {
-                output = connection.Query<PersonModel>("spPerson_GetAll").ToList();
+                output = connection.Query<PersonModel>("dbo.spPerson_GetAll").ToList();
             }
 
             return output;
@@ -71,7 +68,27 @@ namespace TrackerLibrary.DataAcess
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
             {
-                output = connection.Query<SeverityModel>("spSeverity_GetAll").ToList();
+                output = connection.Query<SeverityModel>("dbo.spSeverity_GetAll").ToList();
+            }
+
+            return output;
+        }
+
+        public List<IssueModel> GetIssues()
+        {
+            List<IssueModel> output = new List<IssueModel>();
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
+            {
+                output = connection.Query<IssueModel>("dbo.spIssue_GetAll").ToList();
+
+                foreach (IssueModel issue in output)
+                {
+                    var parameter = new DynamicParameters();
+                    parameter.Add("@PersonId", issue.Id);
+
+                    issue.Assignee = connection.Query<PersonModel>("dbo.spPerson_GetByIssue", parameter, commandType: CommandType.StoredProcedure).First();
+                }
             }
 
             return output;
