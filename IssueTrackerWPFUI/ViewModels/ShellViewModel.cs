@@ -4,6 +4,10 @@ namespace IssueTrackerWPFUI.ViewModels
 {
     public class ShellViewModel : Conductor<object>
     {
+        public ShellViewModel()
+        {
+            ExistingIssues();
+        }
         public void ExistingIssues()
         {
             ActivateItem(new ShellGridViewModel());
@@ -16,7 +20,7 @@ namespace IssueTrackerWPFUI.ViewModels
 
         public void NewPerson()
         {
-            ActivateItem(new NewPersonViewModel());
+            ActivateItem(new RegisterUserViewModel());
         }
     }
 }

@@ -14,10 +14,14 @@ namespace IssueTrackerWPFUI
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
+            
         }
     }
 }

@@ -8,26 +8,35 @@
         Title="MainWindow" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="5"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height=".1*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button x:Name="ExistingIssues" Margin="10" VerticalAlignment="Center" Width="Auto">
-                <TextBlock Text="Issues" TextAlignment="Center"/>
-            </Button>
+        <Grid Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                <DockPanel Grid.Row="0" LastChildFill="False" Height="60">
+                    <Button x:Name="ExistingIssues" DockPanel.Dock="Left" Margin="10" VerticalAlignment="Center" Width="Auto">
+                        <TextBlock Text="Issues" TextAlignment="Center"/>
+                    </Button>
 
-            <Button x:Name="NewIssue" Margin="10" VerticalAlignment="Center" Width="Auto">
-                <TextBlock Text="New Issue" TextAlignment="Center"/>
-            </Button>
+                    <Button x:Name="NewIssue" DockPanel.Dock="Left" Margin="10" VerticalAlignment="Center" Width="Auto" Height="Auto">
+                        <TextBlock Text="Add Issue" TextAlignment="Center"/>
+                    </Button>
 
-            <Button x:Name="NewPerson" Margin="10" VerticalAlignment="Center" Width="Auto">
-                <TextBlock Text="New Person" TextAlignment="Center"/>
-            </Button>
-        </StackPanel>
+                    <Button x:Name="NewPerson" DockPanel.Dock="Left" Margin="10" VerticalAlignment="Center" Width="Auto">
+                        <TextBlock Text="Add Person TMP" TextAlignment="Center"/>
+                    </Button>
 
-        <ContentControl Grid.Row="2" x:Name="ActiveItem" />
+                    <Button x:Name="EditIssue" DockPanel.Dock="Right" Margin="10" VerticalAlignment="Center" >
+                        <TextBlock Text="Edit Issue" TextAlignment="Center"/>
+                    </Button>
+                </DockPanel>
+            </ScrollViewer>
+        </Grid>
+       
+
+        <ContentControl x:Name="ActiveItem" Grid.Row="2"/>
 
     </Grid>
 </Window>

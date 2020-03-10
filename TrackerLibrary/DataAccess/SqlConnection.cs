@@ -87,7 +87,31 @@ namespace TrackerLibrary.DataAcess
                     var parameter = new DynamicParameters();
                     parameter.Add("@PersonId", issue.Id);
 
-                    issue.Assignee = connection.Query<PersonModel>("dbo.spPerson_GetByIssue", parameter, commandType: CommandType.StoredProcedure).First();
+                    issue.Author = connection.Query<PersonModel>("dbo.spPerson_GetByIssue", parameter, commandType: CommandType.StoredProcedure).First();
+                }
+
+                foreach (IssueModel issue in output)
+                {
+                    var parameter = new DynamicParameters();
+                    parameter.Add("@PersonId", issue.Id);
+
+                    issue.Assignees = connection.Query<PersonModel>("dbo.spAssignees_GetByIssue", parameter, commandType: CommandType.StoredProcedure).ToList();
+                }
+
+                foreach (IssueModel issue in output)
+                {
+                    var parameter = new DynamicParameters();
+                    parameter.Add("@SeverityId", issue.Id);
+
+                    issue.Severity = connection.Query<SeverityModel>("dbo.spSeverity_GetByIssue", parameter, commandType: CommandType.StoredProcedure).First();
+                }
+
+                foreach (IssueModel issue in output)
+                {
+                    var parameter = new DynamicParameters();
+                    parameter.Add("@StatusId", issue.Id);
+
+                    issue.Status = connection.Query<StatusModel>("dbo.spStatus_GetByIssue", parameter, commandType: CommandType.StoredProcedure).First();
                 }
             }
 

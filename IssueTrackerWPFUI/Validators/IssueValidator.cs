@@ -23,7 +23,7 @@ namespace IssueTrackerWPFUI.Validators
                 .NotEmpty()
                 .LessThanOrEqualTo(DateTime.Now);
 
-            RuleFor(p => p.Assignee)
+            RuleFor(p => p.Assignees)
                 .NotEmpty();
 
             RuleFor(p => p.Severity)

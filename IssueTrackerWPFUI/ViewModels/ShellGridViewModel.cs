@@ -9,7 +9,7 @@ using TrackerLibrary.Models;
 
 namespace IssueTrackerWPFUI.ViewModels
 {
-    class ShellGridViewModel
+    public class ShellGridViewModel
     {
         public BindableCollection<IssueModel> Issues { get; private set; }
 

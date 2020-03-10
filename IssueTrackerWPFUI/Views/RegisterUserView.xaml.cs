@@ -5,9 +5,9 @@ namespace IssueTrackerWPFUI.Views
     /// <summary>
     /// Interaction logic for NewPersonView.xaml
     /// </summary>
-    public partial class NewPersonView : UserControl
+    public partial class RegisterUserView : UserControl
     {
-        public NewPersonView()
+        public RegisterUserView()
         {
             InitializeComponent();
         }

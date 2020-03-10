@@ -9,7 +9,7 @@ using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace IssueTrackerWPFUI.ViewModels
 {
-    class NewPersonViewModel : PropertyChangedBase
+    public class RegisterUserViewModel : PropertyChangedBase
     {
         private string _userLogin;
         public string UserLogin

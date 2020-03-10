@@ -2,6 +2,7 @@
 using FluentValidation.Results;
 using IssueTrackerWPFUI.Validators;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using TrackerLibrary;
 using TrackerLibrary.Models;
@@ -39,17 +40,31 @@ namespace IssueTrackerWPFUI.ViewModels
             }
         }
 
-        private PersonModel _assignee;
-        public PersonModel Assignee
+        private PersonModel _author;
+        public PersonModel Author
         {
             get
             {
-                return _assignee;
+                return _author;
             }
             set
             {
-                _assignee = value;
-                NotifyOfPropertyChange(() => Assignee);
+                _author = value;
+                NotifyOfPropertyChange(() => Author);
+            }
+        }
+
+        private List<PersonModel> _assignees;
+        public List<PersonModel> Assignees
+        {
+            get
+            {
+                return _assignees;
+            }
+            set
+            {
+                _assignees = value;
+                NotifyOfPropertyChange(() => Assignees);
             }
         }
 
@@ -67,6 +82,20 @@ namespace IssueTrackerWPFUI.ViewModels
             }
         }
 
+        private StatusModel _status;
+        public StatusModel Status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                _status = value;
+                NotifyOfPropertyChange(() => Status);
+            }
+        }
+
         public BindableCollection<SeverityModel> Severities { get; private set; }
         public BindableCollection<PersonModel> People { get; private set; }
 
@@ -78,7 +107,7 @@ namespace IssueTrackerWPFUI.ViewModels
 
         public void AddIssue()
         {
-            IssueModel issue = new IssueModel(Title, Description, DateTime.Now, Assignee, ActiveSeverity);
+            IssueModel issue = new IssueModel(Title, Description, DateTime.Now);
 
             if (ValidateForm(issue) == true)
             {
