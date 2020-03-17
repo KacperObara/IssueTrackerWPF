@@ -1,6 +1,8 @@
 ﻿using Caliburn.Micro;
+using FluentValidation;
 using FluentValidation.Results;
 using IssueTrackerWPFUI.Validators;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using TrackerLibrary;
@@ -66,32 +68,13 @@ namespace IssueTrackerWPFUI.ViewModels
         public void AddPerson()
         {
             PersonModel person = new PersonModel(UserLogin, UserEmail);
+            PasswordModel password = new PasswordModel(UserPassword);
 
-            if (ValidateForm(person) == true)
+            if (Validator.Validate(person, new PersonValidator(), "Login") == true 
+             && Validator.Validate(password, new PasswordValidator()) == true)
             {
-                GlobalConfig.Connection.CreatePerson(person, UserPassword);
+                GlobalConfig.Connection.CreatePerson(person, password);
             }
-        }
-
-        private static bool ValidateForm(PersonModel person)
-        {
-            PersonValidator validator = new PersonValidator();
-            ValidationResult results = validator.Validate(person);
-
-            // Shows errors in MessageBox (TODO: Change it so it doesn't violate DRY)
-            if (results.IsValid == false)
-            {
-                string errorList = "";
-                foreach (ValidationFailure failure in results.Errors)
-                {
-                    errorList += $"{failure.PropertyName}: {failure.ErrorMessage} \n";
-                }
-                MessageBox.Show(errorList);
-
-                return false;
-            }
-
-            return true;
         }
     }
 }

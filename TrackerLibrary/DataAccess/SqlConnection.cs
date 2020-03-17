@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -32,13 +33,13 @@ namespace TrackerLibrary.DataAcess
             }
         }
 
-        public PersonModel CreatePerson(PersonModel model, string password)
+        public PersonModel CreatePerson(PersonModel model, PasswordModel password)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
             {
                 var parameter = new DynamicParameters();
                 parameter.Add("@Login", model.Login);
-                parameter.Add("@Password", password);
+                parameter.Add("@Password", password.Password);
                 parameter.Add("@Email", model.Email);
                 parameter.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
@@ -48,6 +49,36 @@ namespace TrackerLibrary.DataAcess
 
                 return model;
             }
+        }
+
+        public PersonModel GetPersonByLogin(PersonModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
+            {
+                var parameter = new DynamicParameters();
+                parameter.Add("@Login", model.Login);
+
+                model = connection.Query<PersonModel>("dbo.spPerson_GetByLogin", parameter, commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+                return model;
+            }
+        }
+
+        public bool Authenticate(string login, string password)
+        {
+            var parameter = new DynamicParameters();
+            parameter.Add("@login", login);
+            parameter.Add("@password", password);
+
+            bool output = false;
+            parameter.Add("@output", output);
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
+            {
+                output = connection.Query<bool>("dbo.spPerson_Authenticate", parameter, commandType: CommandType.StoredProcedure).First();
+            }
+
+            return output;
         }
 
         public List<PersonModel> GetPeople()
@@ -117,5 +148,7 @@ namespace TrackerLibrary.DataAcess
 
             return output;
         }
+
+
     }
 }

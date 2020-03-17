@@ -10,7 +10,7 @@ using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace IssueTrackerWPFUI.ViewModels
 {
-    public class NewIssueViewModel : PropertyChangedBase
+    public class CreateIssueViewModel : PropertyChangedBase
     {
         private string _title;
         public string Title
@@ -99,7 +99,7 @@ namespace IssueTrackerWPFUI.ViewModels
         public BindableCollection<SeverityModel> Severities { get; private set; }
         public BindableCollection<PersonModel> People { get; private set; }
 
-        public NewIssueViewModel()
+        public CreateIssueViewModel()
         {
             Severities = new BindableCollection<SeverityModel>(GlobalConfig.Connection.GetSeverities());
             People = new BindableCollection<PersonModel>(GlobalConfig.Connection.GetPeople());
@@ -109,31 +109,10 @@ namespace IssueTrackerWPFUI.ViewModels
         {
             IssueModel issue = new IssueModel(Title, Description, DateTime.Now);
 
-            if (ValidateForm(issue) == true)
+            if (Validator.Validate(issue, new IssueValidator()) == true)
             {
                 GlobalConfig.Connection.CreateIssue(issue);
             }
-        }
-
-        private static bool ValidateForm(IssueModel issue)
-        {
-            IssueValidator validator = new IssueValidator();
-            ValidationResult results = validator.Validate(issue);
-
-            // Shows errors in MessageBox (TODO: Change it so it doesn't violate DRY)
-            if (results.IsValid == false)
-            {
-                string errorList = "";
-                foreach (ValidationFailure failure in results.Errors)
-                {
-                    errorList += $"{failure.PropertyName}: {failure.ErrorMessage} \n";
-                }
-                MessageBox.Show(errorList);
-
-                return false;
-            }
-
-            return true;
         }
     }
 }

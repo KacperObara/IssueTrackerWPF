@@ -11,6 +11,11 @@
 
         }
 
+        public PersonModel(string login)
+        {
+            this.Login = login;
+        }
+
         public PersonModel(string login, string emailAdress)
         {
             this.Login = login;

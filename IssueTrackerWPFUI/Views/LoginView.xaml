@@ -20,7 +20,7 @@
             <PasswordBox Height="Auto" FontSize="28"
                          cal:Message.Attach="OnPasswordChanged($source)"/>
             <Button x:Name="Login" Content="Login" MinWidth="75"  MinHeight="25"  HorizontalAlignment="Center" Margin="20" FontSize="28" />
-            <Button x:Name="LoginUsingGithub" Content="Login Using Github" MinWidth="75"  MinHeight="25"  HorizontalAlignment="Center" Margin="20" FontSize="28" />
+            <Button x:Name="Register" Content="Register" MinWidth="75"  MinHeight="25"  HorizontalAlignment="Center" Margin="20" FontSize="28" />
         </StackPanel>
     </Grid>
 </UserControl>

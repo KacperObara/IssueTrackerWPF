@@ -9,16 +9,19 @@ namespace IssueTrackerWPFUI.Validators
     {
         public PersonValidator()
         {
-            RuleFor(p => p.Login)
-                .Cascade(CascadeMode.StopOnFirstFailure)
-                .NotEmpty()
-                .Length(3, 20)
-                .Must(BeAValidLogin).WithMessage("Login cannot start with number");
-
-            RuleFor(p => p.Email)
-                .Cascade(CascadeMode.StopOnFirstFailure)
-                .NotEmpty()
-                .Must(BeAValidEmail).WithMessage("Not a valid Email adress");
+            RuleSet("Login", () => {
+                RuleFor(p => p.Login)
+                    .Cascade(CascadeMode.StopOnFirstFailure)
+                    .NotEmpty()
+                    .Length(3, 20)
+                    .Must(BeAValidLogin).WithMessage("Login cannot start with number");
+            });
+            RuleSet("Email", () => {
+                RuleFor(p => p.Email)
+                    .Cascade(CascadeMode.StopOnFirstFailure)
+                    .NotEmpty()
+                    .Must(BeAValidEmail).WithMessage("Not a valid Email adress");
+            });
         }
 
         private static bool BeAValidLogin(string login)

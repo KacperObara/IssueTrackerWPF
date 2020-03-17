@@ -6,7 +6,9 @@ namespace TrackerLibrary.DataAcess
     public interface IDataConnection
     {
         IssueModel CreateIssue(IssueModel model);
-        PersonModel CreatePerson(PersonModel model, string password);
+        PersonModel CreatePerson(PersonModel model, PasswordModel password);
+        PersonModel GetPersonByLogin(PersonModel model);
+        bool Authenticate(string login, string password);
         List<SeverityModel> GetSeverities();
         List<PersonModel> GetPeople();
         List<IssueModel> GetIssues();

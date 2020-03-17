@@ -105,11 +105,14 @@
     </Compile>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Validators\IssueValidator.cs" />
+    <Compile Include="Validators\PasswordValidator.cs" />
     <Compile Include="Validators\PersonValidator.cs" />
+    <Compile Include="Validators\Validator.cs" />
+    <Compile Include="ViewModels\EditIssueViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ShellGridViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="ViewModels\NewIssueViewModel.cs" />
+    <Compile Include="ViewModels\CreateIssueViewModel.cs" />
     <Compile Include="ViewModels\RegisterUserViewModel.cs" />
     <Compile Include="Views\EditIssueView.xaml.cs">
       <DependentUpon>EditIssueView.xaml</DependentUpon>
@@ -124,7 +127,7 @@
       <DependentUpon>ShellView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\NewIssueView.xaml">
+    <Page Include="Views\CreateIssueView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,8 +137,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Views\NewIssueView.xaml.cs">
-      <DependentUpon>NewIssueView.xaml</DependentUpon>
+    <Compile Include="Views\CreateIssueView.xaml.cs">
+      <DependentUpon>CreateIssueView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterUserView.xaml.cs">
       <DependentUpon>RegisterUserView.xaml</DependentUpon>
