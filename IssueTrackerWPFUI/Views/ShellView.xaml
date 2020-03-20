@@ -15,7 +15,7 @@
 
         <Grid Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch">
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
-                <DockPanel Grid.Row="0" LastChildFill="False" Height="60">
+                <DockPanel Grid.Row="0" LastChildFill="False">
                     <Button x:Name="ShowIssues" DockPanel.Dock="Left" Margin="10" VerticalAlignment="Center" Width="Auto">
                         <TextBlock Text="Issues" TextAlignment="Center"/>
                     </Button>

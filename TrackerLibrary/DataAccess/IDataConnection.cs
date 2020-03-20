@@ -10,6 +10,7 @@ namespace TrackerLibrary.DataAcess
         PersonModel GetPersonByLogin(PersonModel model);
         bool Authenticate(string login, string password);
         List<SeverityModel> GetSeverities();
+        List<StatusModel> GetStatuses();
         List<PersonModel> GetPeople();
         List<IssueModel> GetIssues();
     }

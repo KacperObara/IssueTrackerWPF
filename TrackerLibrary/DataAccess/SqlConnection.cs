@@ -10,12 +10,13 @@ namespace TrackerLibrary.DataAcess
     class SqlConnection : IDataConnection
     {
         /// <summary>
-        /// Saves a new Issue to the database
+        /// Saves a new Issue to the database (includes Assignee table)
         /// </summary>
         /// <param name="model">The issue information</param>
         /// <returns>Issue including an unique identifier</returns>
         public IssueModel CreateIssue(IssueModel model)
         {
+            /// Inserting into the Issue table
             // using in order to prevent memory leaks
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
             {
@@ -23,14 +24,35 @@ namespace TrackerLibrary.DataAcess
                 parameter.Add("@Title", model.Title);
                 parameter.Add("@Description", model.Description);
                 parameter.Add("@CreationDate", model.CreationDate);
+
+                if (model.Status != null)
+                {
+                    parameter.Add("@Id_status", model.Status.Id);
+                }
+
+                parameter.Add("@Id_severity", model.Severity.Id);
+                parameter.Add("@Id_author", model.Author.Id);
                 parameter.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute("dbo.spIssue_Insert", parameter, commandType: CommandType.StoredProcedure);
 
                 model.Id = parameter.Get<int>("@id");
-
-                return model;
             }
+
+            /// Inserting into the Assignee table
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
+            {
+                foreach (PersonModel assignee in model.Assignees)
+                {
+                    var parameter = new DynamicParameters();
+                    parameter.Add("@Id_person", assignee.Id);
+                    parameter.Add("@Id_issue", model.Id);
+
+                    connection.Execute("dbo.spAssignee_Insert", parameter, commandType: CommandType.StoredProcedure);
+                }
+            }
+
+            return model;
         }
 
         public PersonModel CreatePerson(PersonModel model, PasswordModel password)
@@ -100,6 +122,18 @@ namespace TrackerLibrary.DataAcess
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
             {
                 output = connection.Query<SeverityModel>("dbo.spSeverity_GetAll").ToList();
+            }
+
+            return output;
+        }
+
+        public List<StatusModel> GetStatuses()
+        {
+            List<StatusModel> output = new List<StatusModel>();
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
+            {
+                output = connection.Query<StatusModel>("dbo.spStatus_GetAll").ToList();
             }
 
             return output;

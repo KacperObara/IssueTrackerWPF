@@ -19,6 +19,20 @@ namespace IssueTrackerWPFUI.ViewModels
             }
         }
 
+        private PersonModel _loggedUser;
+        public PersonModel LoggedUser
+        {
+            get
+            {
+                return _loggedUser;
+            }
+            set
+            {
+                _loggedUser = value;
+                NotifyOfPropertyChange(() => LoggedUser);
+            }
+        }
+
         public ShellViewModel()
         {
             ShowIssues();
@@ -30,7 +44,7 @@ namespace IssueTrackerWPFUI.ViewModels
         
         public void CreateIssue()
         {
-            ActivateItem(new CreateIssueViewModel());
+            ActivateItem(new CreateIssueViewModel(LoggedUser));
         }
 
         public void Register()

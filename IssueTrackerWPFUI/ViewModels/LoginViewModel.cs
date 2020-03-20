@@ -72,6 +72,7 @@ namespace IssueTrackerWPFUI.ViewModels
                 if (GlobalConfig.Connection.Authenticate(person.Login, password.Password))
                 {
                     person = GlobalConfig.Connection.GetPersonByLogin(person);
+                    shellViewModel.LoggedUser = person;
                     shellViewModel.ShowIssues();
                 }
                 else

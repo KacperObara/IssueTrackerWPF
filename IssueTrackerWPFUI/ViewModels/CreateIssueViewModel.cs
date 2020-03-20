@@ -99,15 +99,18 @@ namespace IssueTrackerWPFUI.ViewModels
         public BindableCollection<SeverityModel> Severities { get; private set; }
         public BindableCollection<PersonModel> People { get; private set; }
 
-        public CreateIssueViewModel()
+        private PersonModel loggedUser;
+
+        public CreateIssueViewModel(PersonModel author)
         {
+            this.loggedUser = author;
             Severities = new BindableCollection<SeverityModel>(GlobalConfig.Connection.GetSeverities());
             People = new BindableCollection<PersonModel>(GlobalConfig.Connection.GetPeople());
         }
 
         public void AddIssue()
         {
-            IssueModel issue = new IssueModel(Title, Description, DateTime.Now);
+            IssueModel issue = new IssueModel(Title, Description, DateTime.Now, ActiveSeverity, loggedUser);
 
             if (Validator.Validate(issue, new IssueValidator()) == true)
             {

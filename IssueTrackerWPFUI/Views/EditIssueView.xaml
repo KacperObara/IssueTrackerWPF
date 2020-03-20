@@ -4,16 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:IssueTrackerWPFUI.Views"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="20">
         <StackPanel Background="#f0f1f2">
-            <TextBlock Text="Title" HorizontalAlignment="Left" Width="Auto" FontSize="20"/>
-            <TextBox x:Name="Title" Height="Auto"/>
-            <TextBlock Text="Description" HorizontalAlignment="Left" Width="Auto" FontSize="20"/>
-            <RichTextBox x:Name="Description" VerticalScrollBarVisibility="Auto" MinHeight="100" MaxHeight="300" Height="Auto" Block.LineHeight="1"/>
-            <TextBlock Text="Severity" HorizontalAlignment="Left" Width="Auto" FontSize="20"/>
-            <ComboBox ItemsSource="{Binding Severities}">
+            <TextBlock Text="Title" HorizontalAlignment="Left" Width="Auto" FontSize="20" Margin="10 0 0 0"/>
+            <TextBox x:Name="Title" Text="{Binding Title}" Height="Auto" Margin="10 0 10 0"/>
+            <TextBlock Text="Description" HorizontalAlignment="Left" Width="Auto" Margin="10 0 0 0" FontSize="20"/>
+
+            <TextBox x:Name="Description" Margin="10 0 10 0"
+                                          Text="{Binding Description}" 
+                                          VerticalScrollBarVisibility="Auto" MinHeight="100" MaxHeight="300" Height="Auto"/>
+
+            <TextBlock Text="Severity" HorizontalAlignment="Left" Width="Auto" FontSize="20" Margin="10 0 0 0"/>
+            <ComboBox ItemsSource="{Binding Severities}" SelectedIndex="{Binding DefaultSeverity, Mode=OneWay}" SelectedItem="{Binding ActiveSeverity}" Margin="10 0 10 0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding SeverityName}"/>
@@ -21,9 +26,9 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <TextBlock Text="Status" HorizontalAlignment="Left" Width="Auto" FontSize="20"/>
+            <TextBlock Text="Status" HorizontalAlignment="Left" Width="Auto" FontSize="20" Margin="10 0 0 0"/>
 
-            <ComboBox ItemsSource="{Binding Statuses}">
+            <ComboBox ItemsSource="{Binding Statuses}" SelectedIndex="{Binding DefaultStatus, Mode=OneWay}" SelectedItem="{Binding ActiveStatus}" Margin="10 0 10 0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding StatusName}"/>
@@ -31,8 +36,66 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <TextBlock Text="Assignee" HorizontalAlignment="Left" Width="Auto" FontSize="20"/>
+            <DockPanel>
+                <TextBlock Text="People" HorizontalAlignment="Left" Width="Auto" FontSize="20" Margin="10 0 0 0"/>
+                <TextBlock Text="Assignees" HorizontalAlignment="Right" Width="Auto" FontSize="20" Margin="0 0 10 0"/>
+            </DockPanel>
 
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <ListView ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" Grid.Column="0" HorizontalAlignment="Stretch" Margin="10 0 0 0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Login}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".1*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width=".1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <GridSplitter Grid.Column="0" HorizontalAlignment="Stretch" />
+
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button x:Name="RemoveAssignee" Width="25" Margin="0 5 0 5">
+                            <Image Source="/Resources/ArrowLeft.png" />
+                        </Button>
+                        <Button x:Name="AddAssignee" Width="25" Margin="0 0 0 5">
+                            <Image Source="/Resources/ArrowRight.png" />
+                        </Button>
+                    </StackPanel>
+
+                    <GridSplitter Grid.Column="2" HorizontalAlignment="Stretch" />
+                </Grid>
+
+
+                <ListView Grid.Column="2" ItemsSource="{Binding Assignees}" SelectedItem="{Binding SelectedAssignee}" HorizontalAlignment="Stretch" MinHeight="50" Margin="0 0 10 0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Login}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+
+
+
+
+            <!--
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -45,7 +108,7 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Column="0" Grid.Row="0">
-                    <ComboBox ItemsSource="{Binding People}">
+                    <ComboBox ItemsSource="{Binding People}" Margin="10 0 0 0">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Login}"/>
@@ -56,13 +119,13 @@
                     <Button  x:Name="RemoveAssignee" Content="Remove" HorizontalAlignment="Right"/>
 
                 </StackPanel>
-                
-                <ListView Grid.Column="1" Grid.Row="0" MinHeight="40" MaxHeight="100" Height="Auto" Block.LineHeight="1"/>
+
+                <ListView Grid.Column="1" Grid.Row="0" MinHeight="40" MaxHeight="100" Height="Auto" Block.LineHeight="1" Margin="10 0 10 0"/>
             </Grid>
 
-
+  -->
             <DockPanel LastChildFill="False">
-                <Button x:Name="EditIssue" Content="Accept" DockPanel.Dock="Right" MinWidth="75"  MinHeight="25" Margin="20" />
+                <Button x:Name="AcceptChanges" Content="Accept" DockPanel.Dock="Right" MinWidth="75"  MinHeight="25" Margin="20" />
                 <Button x:Name="DeleteIssue" Content="Delete" DockPanel.Dock="Left" MinWidth="75"  MinHeight="25" Margin="20" />
             </DockPanel>
         </StackPanel>
