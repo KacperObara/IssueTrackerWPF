@@ -42,9 +42,10 @@ namespace TrackerLibrary.Models
             this.Author = author;
         }
 
-        public IssueModel(string title, string description, DateTime creationDate,
+        public IssueModel(int id, string title, string description, DateTime creationDate,
                           StatusModel status, SeverityModel severity, PersonModel author, List<PersonModel> assignees)
         {
+            this.Id = id;
             this.Title = title;
             this.Description = description;
             this.CreationDate = creationDate;

@@ -99,23 +99,32 @@ namespace IssueTrackerWPFUI.ViewModels
         public BindableCollection<SeverityModel> Severities { get; private set; }
         public BindableCollection<PersonModel> People { get; private set; }
 
-        private PersonModel loggedUser;
+        private readonly ShellViewModel shellViewModel;
 
-        public CreateIssueViewModel(PersonModel author)
+        public CreateIssueViewModel(ShellViewModel shellViewModel)
         {
-            this.loggedUser = author;
+
+            this.shellViewModel = shellViewModel;
             Severities = new BindableCollection<SeverityModel>(GlobalConfig.Connection.GetSeverities());
             People = new BindableCollection<PersonModel>(GlobalConfig.Connection.GetPeople());
         }
 
-        public void AddIssue()
+        public bool CanAddIssue(string title)
         {
-            IssueModel issue = new IssueModel(Title, Description, DateTime.Now, ActiveSeverity, loggedUser);
+            return String.IsNullOrEmpty(title);
+        }
+
+        public void AddIssue(string title)
+        {
+            IssueModel issue = new IssueModel(Title, Description, DateTime.Now, ActiveSeverity, shellViewModel.LoggedUser);
 
             if (Validator.Validate(issue, new IssueValidator()) == true)
             {
                 GlobalConfig.Connection.CreateIssue(issue);
+                MessageBox.Show("Operation successful");
+                shellViewModel.ShowIssues();
             }
+
         }
     }
 }

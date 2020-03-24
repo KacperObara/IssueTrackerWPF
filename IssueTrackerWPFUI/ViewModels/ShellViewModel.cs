@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using System.Windows;
 using TrackerLibrary.Models;
 
 namespace IssueTrackerWPFUI.ViewModels
@@ -35,7 +36,7 @@ namespace IssueTrackerWPFUI.ViewModels
 
         public ShellViewModel()
         {
-            ShowIssues();
+            Login();
         }
         public void ShowIssues()
         {
@@ -44,12 +45,19 @@ namespace IssueTrackerWPFUI.ViewModels
         
         public void CreateIssue()
         {
-            ActivateItem(new CreateIssueViewModel(LoggedUser));
+            if (LoggedUser == null)
+            {
+                ActivateItem(new LoginViewModel(this));
+            }
+            else
+            {
+                ActivateItem(new CreateIssueViewModel(this));
+            }
         }
 
         public void Register()
         {
-            ActivateItem(new RegisterUserViewModel());
+            ActivateItem(new RegisterUserViewModel(this));
         }
 
         public void Login()
@@ -59,7 +67,15 @@ namespace IssueTrackerWPFUI.ViewModels
 
         public void EditIssue()
         {
-            ActivateItem(new EditIssueViewModel(SelectedIssue));
+            if(SelectedIssue != null)
+            {
+                ActivateItem(new EditIssueViewModel(this));
+            }
+            else
+            {
+                MessageBox.Show("No issue selected");
+            }
+
         }
     }
 }

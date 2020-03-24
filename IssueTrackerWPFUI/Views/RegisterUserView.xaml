@@ -22,6 +22,7 @@
             <TextBlock Text="Email" HorizontalAlignment="Center" Width="Auto" FontSize="28"/>
             <TextBox x:Name="UserEmail" Height="Auto" FontSize="28"/>
             <Button x:Name="AddPerson" Content="Register" MinWidth="75"  MinHeight="25"  HorizontalAlignment="Center" Margin="20" FontSize="28" />
+            <Button x:Name="Login" Content="Login" MinWidth="75"  MinHeight="25"  HorizontalAlignment="Center" Margin="20" FontSize="28" />
         </StackPanel>
     </Grid>
 </UserControl>

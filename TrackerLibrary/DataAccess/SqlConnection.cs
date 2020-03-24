@@ -9,51 +9,77 @@ namespace TrackerLibrary.DataAcess
 {
     class SqlConnection : IDataConnection
     {
-        /// <summary>
-        /// Saves a new Issue to the database (includes Assignee table)
-        /// </summary>
-        /// <param name="model">The issue information</param>
-        /// <returns>Issue including an unique identifier</returns>
-        public IssueModel CreateIssue(IssueModel model)
+        public void UpdateIssue(IssueModel issue)
         {
             /// Inserting into the Issue table
             // using in order to prevent memory leaks
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
             {
                 var parameter = new DynamicParameters();
-                parameter.Add("@Title", model.Title);
-                parameter.Add("@Description", model.Description);
-                parameter.Add("@CreationDate", model.CreationDate);
+                parameter.Add("@id", issue.Id);
+                parameter.Add("@Title", issue.Title);
+                parameter.Add("@Description", issue.Description);
+                parameter.Add("@CreationDate", issue.CreationDate);
+                parameter.Add("@Id_status", issue.Status.Id);
+                parameter.Add("@Id_severity", issue.Severity.Id);
+                parameter.Add("@Id_author", issue.Author.Id);
 
-                if (model.Status != null)
+                connection.Execute("dbo.spIssue_Update", parameter, commandType: CommandType.StoredProcedure);
+            }
+
+            CreateAssignees(issue.Assignees, issue.Id);
+        }
+
+        /// <summary>
+        /// Saves a new Issue to the database (includes Assignee table)
+        /// </summary>
+        /// <param name="issue">The issue information</param>
+        /// <returns>Issue including an unique identifier</returns>
+        public IssueModel CreateIssue(IssueModel issue)
+        {
+            /// Inserting into the Issue table
+            // using in order to prevent memory leaks
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
+            {
+                var parameter = new DynamicParameters();
+                parameter.Add("@Title", issue.Title);
+                parameter.Add("@Description", issue.Description);
+                parameter.Add("@CreationDate", issue.CreationDate);
+
+                if (issue.Status != null)
                 {
-                    parameter.Add("@Id_status", model.Status.Id);
+                    parameter.Add("@Id_status", issue.Status.Id);
                 }
 
-                parameter.Add("@Id_severity", model.Severity.Id);
-                parameter.Add("@Id_author", model.Author.Id);
+                parameter.Add("@Id_severity", issue.Severity.Id);
+                parameter.Add("@Id_author", issue.Author.Id);
                 parameter.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute("dbo.spIssue_Insert", parameter, commandType: CommandType.StoredProcedure);
 
-                model.Id = parameter.Get<int>("@id");
+                issue.Id = parameter.Get<int>("@id");
             }
 
-            /// Inserting into the Assignee table
+            CreateAssignees(issue.Assignees, issue.Id);
+
+            return issue;
+        }
+
+        public void CreateAssignees(List<PersonModel> Assignees, int issueId)
+        {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConnectionString("IssueTracker")))
             {
-                foreach (PersonModel assignee in model.Assignees)
+                foreach (PersonModel assignee in Assignees)
                 {
                     var parameter = new DynamicParameters();
                     parameter.Add("@Id_person", assignee.Id);
-                    parameter.Add("@Id_issue", model.Id);
+                    parameter.Add("@Id_issue", issueId);
 
                     connection.Execute("dbo.spAssignee_Insert", parameter, commandType: CommandType.StoredProcedure);
                 }
             }
-
-            return model;
         }
+
 
         public PersonModel CreatePerson(PersonModel model, PasswordModel password)
         {

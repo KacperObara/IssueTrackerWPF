@@ -5,6 +5,7 @@ namespace TrackerLibrary.DataAcess
 {
     public interface IDataConnection
     {
+        void UpdateIssue(IssueModel issue);
         IssueModel CreateIssue(IssueModel model);
         PersonModel CreatePerson(PersonModel model, PasswordModel password);
         PersonModel GetPersonByLogin(PersonModel model);

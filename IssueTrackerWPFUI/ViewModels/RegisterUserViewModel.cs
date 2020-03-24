@@ -55,6 +55,13 @@ namespace IssueTrackerWPFUI.ViewModels
             }
         }
 
+        private readonly ShellViewModel shellViewModel;
+
+        public RegisterUserViewModel(ShellViewModel shellViewModel)
+        {
+            this.shellViewModel = shellViewModel;
+        }
+
         /// <summary>
         /// Function that binds PasswordBox and UserPassword. Can't be binded automatically,
         /// because Caliburn.Micro doesn't work with PasswordBoxes.
@@ -74,7 +81,15 @@ namespace IssueTrackerWPFUI.ViewModels
              && Validator.Validate(password, new PasswordValidator()) == true)
             {
                 GlobalConfig.Connection.CreatePerson(person, password);
+
+                MessageBox.Show("Operation successful");
+                shellViewModel.ShowIssues();
             }
+        }
+
+        public void Login()
+        {
+            shellViewModel.Login();
         }
     }
 }

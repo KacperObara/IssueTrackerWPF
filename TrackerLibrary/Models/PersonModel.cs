@@ -1,4 +1,6 @@
-﻿namespace TrackerLibrary.Models
+﻿using System;
+
+namespace TrackerLibrary.Models
 {
     public class PersonModel
     {
@@ -20,6 +22,20 @@
         {
             this.Login = login;
             this.Email = emailAdress;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            //Check for null and compare run-time types.
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                PersonModel person = (PersonModel)obj;
+                return (Id == person.Id);
+            }
         }
     }
 }
