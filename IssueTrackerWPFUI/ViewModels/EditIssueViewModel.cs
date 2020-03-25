@@ -12,6 +12,7 @@ namespace IssueTrackerWPFUI.ViewModels
 {
     public class EditIssueViewModel : PropertyChangedBase
     {
+        #region Properties
         private string _title;
         public string Title
         {
@@ -118,6 +119,8 @@ namespace IssueTrackerWPFUI.ViewModels
         }
 
         private readonly ShellViewModel shellViewModel;
+
+        #endregion
 
         public EditIssueViewModel(ShellViewModel shellViewModel)
         {

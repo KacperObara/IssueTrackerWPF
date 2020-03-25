@@ -12,6 +12,7 @@ namespace IssueTrackerWPFUI.ViewModels
 {
     public class CreateIssueViewModel : PropertyChangedBase
     {
+        #region Properties
         private string _title;
         public string Title
         {
@@ -101,6 +102,8 @@ namespace IssueTrackerWPFUI.ViewModels
 
         private readonly ShellViewModel shellViewModel;
 
+        #endregion
+
         public CreateIssueViewModel(ShellViewModel shellViewModel)
         {
 
@@ -109,12 +112,7 @@ namespace IssueTrackerWPFUI.ViewModels
             People = new BindableCollection<PersonModel>(GlobalConfig.Connection.GetPeople());
         }
 
-        public bool CanAddIssue(string title)
-        {
-            return String.IsNullOrEmpty(title);
-        }
-
-        public void AddIssue(string title)
+        public void AddIssue()
         {
             IssueModel issue = new IssueModel(Title, Description, DateTime.Now, ActiveSeverity, shellViewModel.LoggedUser);
 
