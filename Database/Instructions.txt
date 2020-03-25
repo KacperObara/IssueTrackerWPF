@@ -1,0 +1,2 @@
+Connection String is located in the App.config file.
+Create the database locally by generated SQL file or by restoring backup.
