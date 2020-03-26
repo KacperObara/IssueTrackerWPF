@@ -69,6 +69,7 @@ namespace IssueTrackerWPFUI.ViewModels
             if (Validator.Validate(person, new PersonValidator(), "Login")
              && Validator.Validate(password, new PasswordValidator()) == true)
             {
+                password.Hash();
                 if (GlobalConfig.Connection.Authenticate(person.Login, password.Password))
                 {
                     person = GlobalConfig.Connection.GetPersonByLogin(person);

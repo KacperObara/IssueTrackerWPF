@@ -14,5 +14,13 @@ namespace TrackerLibrary.Models
         {
             this.Password = password;
         }
+
+        public void Hash()
+        {
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(Password);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            Password = System.Text.Encoding.ASCII.GetString(data);
+            Console.WriteLine(Password);
+        }
     }
 }

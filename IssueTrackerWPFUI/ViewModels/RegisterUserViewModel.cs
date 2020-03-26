@@ -80,6 +80,7 @@ namespace IssueTrackerWPFUI.ViewModels
             if (Validator.Validate(person, new PersonValidator(), "Login") == true 
              && Validator.Validate(password, new PasswordValidator()) == true)
             {
+                password.Hash();
                 GlobalConfig.Connection.CreatePerson(person, password);
 
                 MessageBox.Show("Operation successful");
